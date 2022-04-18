@@ -6,8 +6,8 @@ import Banner from './components/Banner'
 function App() {
 	return (
 		<>
-			<NewGameMenu />
-			{/* <Game /> */}
+			{/* <NewGameMenu /> */}
+			<Game />
 			{/* <Banner /> */}
 		</>
 	)
