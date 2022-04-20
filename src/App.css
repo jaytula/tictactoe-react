@@ -206,3 +206,76 @@ body {
 .yellow-pri {
   background-color: var(--yellow-primary);
 }
+
+/* Banner */
+
+.banner {
+  display: flex;
+  z-index: 10;
+  position: absolute;
+  width: 100vw;
+  height: 266px;
+  top: calc(50% - 133px);
+  left: 0px;
+  background-color: var(--dark-secondary);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner p {
+  line-height: 20px;
+  font-size: 20px;
+  color: var(--light-primary);
+  margin-bottom: 16px;
+  margin-top: 45px;
+}
+
+h1 {
+  line-height: 50px;
+  font-size: 50px;
+  margin-left: 24px;
+}
+
+.bg-darken {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.btn-quit {
+  background-color: var(--light-primary);
+  box-shadow: 0px 4px var(--light-shadow);
+  line-height: 20px;
+  font-size: 20px;
+  padding: 16px 16px;
+  border-radius: 10px;
+}
+
+.btn-nextrnd {
+  background-color: var(--yellow-primary);
+  box-shadow: 0px 4px var(--yellow-shadow);
+  line-height: 20px;
+  font-size: 20px;
+  padding: 16px 16px;
+  border-radius: 10px;
+}
+
+.banner div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner div:nth-child(2) {
+  display: flex;
+  color: var(--yellow-primary);
+}
+
+.banner button {
+  margin: 24px 8px 45px;
+}

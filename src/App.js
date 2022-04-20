@@ -8,7 +8,7 @@ function App() {
 		<>
 			{/* <NewGameMenu /> */}
 			<Game />
-			{/* <Banner /> */}
+			<Banner />
 		</>
 	)
 }
