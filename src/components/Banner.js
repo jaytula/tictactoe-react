@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import yellowO64 from '../assets/icon-o.svg'
 
 const Banner = () => {
@@ -13,8 +14,12 @@ const Banner = () => {
 					<h1>TAKES THE ROUND</h1>
 				</div>
 				<div>
-					<button className='btn-quit'>QUIT</button>
-					<button className='btn-nextrnd'>NEXT ROUND</button>
+					<button className='btn-quit'>
+						<Link to='/'>QUIT</Link>
+					</button>
+					<button className='btn-nextrnd'>
+						<Link to='/game'>NEXT ROUND</Link>
+					</button>
 				</div>
 			</div>
 		</>

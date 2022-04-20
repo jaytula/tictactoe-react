@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../assets/logo.svg'
 import greyX20 from '../assets/icon-x-20.svg'
 import restart from '../assets/icon-restart.svg'
@@ -9,7 +10,9 @@ const Game = () => {
 				<img class='logo' src={logo} alt='xo logo'></img>
 				<div class='turn'>
 					<img src={greyX20} alt=''></img>
-					<p>TURN</p>
+					<p>
+						<Link to='/gameover'>TURN</Link>
+					</p>
 				</div>
 				<div class='restart'>
 					<img src={restart} alt=''></img>

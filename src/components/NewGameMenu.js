@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../assets/logo.svg'
 import greyX32 from '../assets/icon-x-32-grey.svg'
 import darkGreyO32 from '../assets/icon-o-32-dark-grey.svg'
@@ -28,8 +29,12 @@ const NewGameMenu = () => {
 			</div>
 
 			<div class='container-btn'>
-				<button class='btn btn-ng btn-yellow'>NEW GAME (VS CPU)</button>
-				<button class='btn btn-ng btn-blue'>NEW GAME (VS PLAYER)</button>
+				<button class='btn btn-ng btn-yellow'>
+					<Link to='/game'>NEW GAME (VS CPU)</Link>
+				</button>
+				<button class='btn btn-ng btn-blue'>
+					<Link to='/game'>NEW GAME (VS PLAYER)</Link>
+				</button>
 			</div>
 		</div>
 	)
