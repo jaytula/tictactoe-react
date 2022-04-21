@@ -5,21 +5,21 @@ import restart from '../assets/icon-restart.svg'
 
 const Game = () => {
 	return (
-		<div class='container container-gs'>
-			<div class='game-top'>
-				<img class='logo' src={logo} alt='xo logo'></img>
-				<div class='turn'>
+		<div className='container container-gs'>
+			<div className='game-top'>
+				<img className='logo' src={logo} alt='xo logo'></img>
+				<div className='turn'>
 					<img src={greyX20} alt=''></img>
 					<p>
 						<Link to='/gameover'>TURN</Link>
 					</p>
 				</div>
-				<div class='restart'>
+				<div className='restart'>
 					<img src={restart} alt=''></img>
 				</div>
 			</div>
 
-			<div class='tiles-grid'>
+			<div className='tiles-grid'>
 				<div></div>
 				<div></div>
 				<div></div>
@@ -31,16 +31,16 @@ const Game = () => {
 				<div></div>
 			</div>
 
-			<div class='scores'>
-				<div class='blue-pri'>
+			<div className='scores'>
+				<div className='blue-pri'>
 					<p>X (YOU)</p>
 					<p>0</p>
 				</div>
-				<div class='light-pri'>
+				<div className='light-pri'>
 					<p>TIES</p>
 					<p>0</p>
 				</div>
-				<div class='yellow-pri'>
+				<div className='yellow-pri'>
 					<p>O (CPU)</p>
 					<p>0</p>
 				</div>

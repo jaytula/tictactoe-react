@@ -84,14 +84,14 @@ a, a:hover, a:visited, a:active, a:link {
   display: flex;
   margin: 9px 8px;
 }
-.btn-x {
+.btn-off {
   width: 50%;
   border-radius: 10px;
   background-color: var(--dark-primary);
   height: 54px;
 }
 
-.btn-o {
+.btn-on {
   width: 50%;
   border-radius: 10px;
   background-color: var(--light-primary);
