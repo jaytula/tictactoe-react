@@ -10,7 +10,7 @@ const onOffBtns = document.querySelectorAll('.btn-svg')
 // 	if (button.classList.contains('btn-on')) return true
 // 	else return false
 // }
-
+// hello
 const NewGameMenu = () => {
 	const [isOPlayer1, setIsOPlayer1] = useState(true)
 	// const [btnX, setBtnX] = useState(onOffBtns[0])
