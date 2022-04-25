@@ -4,32 +4,19 @@ import greyX32 from '../assets/icon-x-32-grey.svg'
 import greyO32 from '../assets/icon-o-32-grey.svg'
 import darkGreyX32 from '../assets/icon-x-32-dark-grey.svg'
 import darkGreyO32 from '../assets/icon-o-32-dark-grey.svg'
-import { useState } from 'react'
-const onOffBtns = document.querySelectorAll('.btn-svg')
-// const isOn = (button) => {
-// 	if (button.classList.contains('btn-on')) return true
-// 	else return false
-// }
-// hello
+import { useState, useEffect } from 'react'
+const buttonX = document.querySelector('.btn-x')
+const buttonO = document.querySelector('.btn-o')
+
 const NewGameMenu = () => {
 	const [isOPlayer1, setIsOPlayer1] = useState(true)
-	// const [btnX, setBtnX] = useState(onOffBtns[0])
-	// const [btnO, setBtnO] = useState(onOffBtns[1])
+
+	// useEffect(() => {
+	// 	setbtnXBg(!btnXBg)
+	// 	setbtnOBg(!btnOBg)
+	// }, [btnXBg, btnOBg])
+
 	const onClick = () => {
-		if (onOffBtns[0].classList.contains('btn-off')) {
-			onOffBtns[0].classList.remove('btn-off')
-			onOffBtns[0].classList.add('btn-on')
-		} else {
-			onOffBtns[0].classList.remove('btn-on')
-			onOffBtns[0].classList.add('btn-off')
-		}
-		if (onOffBtns[1].classList.contains('btn-off')) {
-			onOffBtns[1].classList.remove('btn-off')
-			onOffBtns[1].classList.add('btn-on')
-		} else {
-			onOffBtns[1].classList.remove('btn-on')
-			onOffBtns[1].classList.add('btn-off')
-		}
 		setIsOPlayer1(!isOPlayer1)
 	}
 
@@ -44,14 +31,30 @@ const NewGameMenu = () => {
 
 				<div className='btn-xo-container'>
 					<div className='btn-xo'>
-						<button className='btn btn-svg btn-off' onClick={onClick}>
+						<button
+							className='btn btn-svg btn-x'
+							onClick={onClick}
+							style={
+								isOPlayer1
+									? { backgroundColor: '#1A2A33' }
+									: { backgroundColor: '#A8BFC9' }
+							}
+						>
 							{isOPlayer1 ? (
 								<img src={greyX32} alt='' />
 							) : (
 								<img src={darkGreyX32} alt='' />
 							)}
 						</button>
-						<button className='btn btn-svg btn-on' onClick={onClick}>
+						<button
+							className='btn btn-svg btn-o'
+							onClick={onClick}
+							style={
+								isOPlayer1
+									? { backgroundColor: '#A8BFC9' }
+									: { backgroundColor: '#1A2A33' }
+							}
+						>
 							{isOPlayer1 ? (
 								<img src={darkGreyO32} alt='' />
 							) : (

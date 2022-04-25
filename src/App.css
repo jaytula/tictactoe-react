@@ -84,19 +84,19 @@ a, a:hover, a:visited, a:active, a:link {
   display: flex;
   margin: 9px 8px;
 }
-.btn-off {
+.btn-svg {
   width: 50%;
   border-radius: 10px;
   background-color: var(--dark-primary);
   height: 54px;
 }
 
-.btn-on {
+/* .btn-on {
   width: 50%;
   border-radius: 10px;
   background-color: var(--light-primary);
   height: 54px;
-}
+} */
 
 /* Landing page button container */
 .container-btn {
