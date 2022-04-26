@@ -4,18 +4,11 @@ import greyX32 from '../assets/icon-x-32-grey.svg'
 import greyO32 from '../assets/icon-o-32-grey.svg'
 import darkGreyX32 from '../assets/icon-x-32-dark-grey.svg'
 import darkGreyO32 from '../assets/icon-o-32-dark-grey.svg'
-import { useState, useEffect } from 'react'
-const buttonX = document.querySelector('.btn-x')
-const buttonO = document.querySelector('.btn-o')
+import { useState } from 'react'
 
 const NewGameMenu = () => {
 	const [isOPlayer1, setIsOPlayer1] = useState(true)
-
-	// useEffect(() => {
-	// 	setbtnXBg(!btnXBg)
-	// 	setbtnOBg(!btnOBg)
-	// }, [btnXBg, btnOBg])
-
+	const [isVsPlayer, setIsVsPlayer] = useState(false)
 	const onClick = () => {
 		setIsOPlayer1(!isOPlayer1)
 	}
@@ -68,11 +61,21 @@ const NewGameMenu = () => {
 			</div>
 
 			<div className='container-btn'>
-				<button className='btn btn-ng btn-yellow'>
-					<Link to='/game'>NEW GAME (VS CPU)</Link>
+				<button
+					className='btn btn-ng btn-yellow'
+					onClick={(e) => setIsVsPlayer(false)}
+				>
+					<Link to='/game' state={{ isVsPlayer }}>
+						NEW GAME (VS CPU)
+					</Link>
 				</button>
-				<button className='btn btn-ng btn-blue'>
-					<Link to='/game'>NEW GAME (VS PLAYER)</Link>
+				<button
+					className='btn btn-ng btn-blue'
+					onClick={(e) => setIsVsPlayer(true)}
+				>
+					<Link to='/game' state={{ isVsPlayer }}>
+						NEW GAME (VS PLAYER)
+					</Link>
 				</button>
 			</div>
 		</div>

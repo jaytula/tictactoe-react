@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/logo.svg'
 import greyX20 from '../assets/icon-x-20.svg'
 import restart from '../assets/icon-restart.svg'
 
 const Game = () => {
+	const location = useLocation()
+	const isVsPlayer = location.state.isVsPlayer
 	return (
 		<div className='container container-gs'>
 			<div className='game-top'>
