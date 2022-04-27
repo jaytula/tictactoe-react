@@ -293,3 +293,8 @@ h1 {
   margin: 24px 8px 45px;
 }
 
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
