@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import GridItem from './GridItem'
 import logo from '../assets/logo.svg'
 import greyX20 from '../assets/icon-x-20.svg'
@@ -11,7 +11,7 @@ const Game = () => {
 	const isVsPlayer = location.state.isVsPlayer
 	const [isCurrentTurnX, setIsCurrentTurnX] = useState(true)
 	const propTest = () => {
-		console.log('test success!')
+		setIsCurrentTurnX(!isCurrentTurnX)
 	}
 
 	return (
@@ -30,15 +30,15 @@ const Game = () => {
 			</div>
 
 			<div className='tiles-grid'>
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
-				<GridItem isCurrentTurnX={isCurrentTurnX} onMyClick={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
+				<GridItem isCurrentTurnX={isCurrentTurnX} propTest={propTest} />
 			</div>
 
 			<div className='scores'>

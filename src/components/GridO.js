@@ -1,9 +1,9 @@
-import yellowO64Outline from '../assets/icon-o-outline.svg'
+import yellowO64 from '../assets/icon-o.svg'
 
 const GridO = () => {
 	return (
 		<div className='center'>
-			<img src={yellowO64Outline} alt=''></img>
+			<img src={yellowO64} alt=''></img>
 		</div>
 	)
 }

@@ -13,6 +13,8 @@ const NewGameMenu = () => {
 		setIsOPlayer1(!isOPlayer1)
 	}
 
+	const [shouldRedirect, setShouldRedirect] = useState(false)
+
 	return (
 		<div className='container'>
 			<div className='logo-container'>
@@ -65,7 +67,7 @@ const NewGameMenu = () => {
 					className='btn btn-ng btn-yellow'
 					onClick={(e) => setIsVsPlayer(false)}
 				>
-					<Link to='/game' state={{ isVsPlayer }}>
+					<Link to='/game' state={{ isVsPlayer, shouldRedirect }}>
 						NEW GAME (VS CPU)
 					</Link>
 				</button>
@@ -73,7 +75,7 @@ const NewGameMenu = () => {
 					className='btn btn-ng btn-blue'
 					onClick={(e) => setIsVsPlayer(true)}
 				>
-					<Link to='/game' state={{ isVsPlayer }}>
+					<Link to='/game' state={{ isVsPlayer, shouldRedirect }}>
 						NEW GAME (VS PLAYER)
 					</Link>
 				</button>
