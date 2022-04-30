@@ -65,7 +65,7 @@ const NewGameMenu = () => {
 			<div className='container-btn'>
 				<button
 					className='btn btn-ng btn-yellow'
-					onClick={(e) => setIsVsPlayer(false)}
+					onClick={() => setIsVsPlayer(false)}
 				>
 					<Link to='/game' state={{ isVsPlayer, shouldRedirect }}>
 						NEW GAME (VS CPU)
@@ -73,7 +73,7 @@ const NewGameMenu = () => {
 				</button>
 				<button
 					className='btn btn-ng btn-blue'
-					onClick={(e) => setIsVsPlayer(true)}
+					onClick={() => setIsVsPlayer(true)}
 				>
 					<Link to='/game' state={{ isVsPlayer, shouldRedirect }}>
 						NEW GAME (VS PLAYER)

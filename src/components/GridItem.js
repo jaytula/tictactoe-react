@@ -4,28 +4,31 @@ import GridOOutline from './GridOOutline'
 import GridO from './GridO'
 import { useState } from 'react'
 
-const GridItem = ({ isCurrentTurnX, propTest }) => {
+const GridItem = ({ turn, switchTurn, num, cells }) => {
 	const [isHover, setIsHover] = useState(false)
 	const [isOn, setIsOn] = useState(false)
 
+	const handleClick = (num) => {
+		setIsOn(true)
+		switchTurn(num)
+	}
+
 	return (
 		<div
-			onMouseEnter={(e) => setIsHover(true)}
-			onMouseLeave={(e) => setIsHover(false)}
-			onClick={(e) => {
-				setIsOn(true)
-				propTest()
-			}}
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
+			onClick={() => handleClick(num)}
 		>
-			{/* {isHover && (isCurrentTurnX ? <GridXOutline /> : <GridOOutline />)} */}
-			{/* {isOn && (isCurrentTurnX ? <GridX /> : <GridO />)} */}
-			{(() => {
+			{/* {isHover && (turn ? <GridXOutline /> : <GridOOutline />)} */}
+			{/* {isOn && (turn ? <GridX /> : <GridO />)} */}
+			{/* {(() => {
 				if (isOn) {
-					return isCurrentTurnX ? <GridX /> : <GridO />
+					return turn ? <GridX /> : <GridO />
 				} else if (isHover) {
-					return isCurrentTurnX ? <GridXOutline /> : <GridOOutline />
+					return turn ? <GridXOutline /> : <GridOOutline />
 				}
-			})()}
+			})()} */}
+			{cells[num]}
 		</div>
 	)
 }
