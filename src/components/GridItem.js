@@ -8,10 +8,7 @@ const GridItem = ({ turn, switchTurn, num, cells }) => {
 	const [isHover, setIsHover] = useState(false)
 	const [isOn, setIsOn] = useState(false)
 
-	const handleClick = (num) => {
-		setIsOn(true)
-		switchTurn(num)
-	}
+	const handleClick = (num) => switchTurn(num)
 
 	return (
 		<div
@@ -28,7 +25,18 @@ const GridItem = ({ turn, switchTurn, num, cells }) => {
 					return turn ? <GridXOutline /> : <GridOOutline />
 				}
 			})()} */}
-			{cells[num]}
+			{/* {cells[num]} */}
+			{(() => {
+				if (cells[num] === 'x') {
+					return <GridX />
+				} else if (cells[num] === 'o') {
+					return <GridO />
+				} else if (isHover && turn === 'x') {
+					return <GridXOutline />
+				} else if (isHover && turn === 'o') {
+					return <GridOOutline />
+				}
+			})()}
 		</div>
 	)
 }

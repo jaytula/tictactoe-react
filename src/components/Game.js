@@ -8,10 +8,18 @@ import restart from '../assets/icon-restart.svg'
 
 const Game = () => {
 	const location = useLocation()
-	const isVsPlayer = location.state.isVsPlayer
-	const [turn, setTurn] = useState('x')
+	const player1 = location.state.player1
+	const [turn, setTurn] = useState(player1)
 	const [cells, setCells] = useState(Array(9).fill(''))
-	const [winner, setWinner] = useState()
+	const [winner, setWinner] = useState(null)
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (winner !== null) {
+			navigate('/gameover', { state: { player1 } })
+			setWinner(null)
+		}
+	}, [winner])
 
 	const checkForWinner = (squares) => {
 		let combinations = {
@@ -76,7 +84,7 @@ const Game = () => {
 			<div className='game-top'>
 				<img className='logo' src={logo} alt='xo logo'></img>
 				<div className='turn'>
-					<img src={turn ? greyX20 : greyO20} alt=''></img>
+					<img src={turn === 'x' ? greyX20 : greyO20} alt=''></img>
 					<p>
 						<Link to='/gameover'>TURN</Link>
 					</p>
