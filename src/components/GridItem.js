@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const GridItem = ({ turn, switchTurn, num, cells }) => {
 	const [isHover, setIsHover] = useState(false)
-	const [isOn, setIsOn] = useState(false)
+	// const [isOn, setIsOn] = useState(false)
 
 	const handleClick = (num) => switchTurn(num)
 

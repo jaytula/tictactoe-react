@@ -1,26 +1,28 @@
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import logo from '../assets/logo.svg'
 import greyX32 from '../assets/icon-x-32-grey.svg'
 import greyO32 from '../assets/icon-o-32-grey.svg'
 import darkGreyX32 from '../assets/icon-x-32-dark-grey.svg'
 import darkGreyO32 from '../assets/icon-o-32-dark-grey.svg'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const NewGameMenu = () => {
+	const navigate = useNavigate()
 	const [player1, setPlayer1] = useState('o')
-	console.log(player1)
-	// const [isVsPlayer, setIsVsPlayer] = useState(false)
+	const [gameType, setGameType] = useState('default')
 	const onClick = () => {
 		if (player1 === 'x') {
 			setPlayer1('o')
-			console.log(player1)
 		} else {
 			setPlayer1('x')
-			console.log(player1)
 		}
 	}
 
-	const [shouldRedirect, setShouldRedirect] = useState(false)
+	// useEffect(() => {
+	// 	navigate('/game', { state: { gameType, player1 } })
+	// }, [])
+
+	// const [shouldRedirect, setShouldRedirect] = useState(false)
 
 	return (
 		<div className='container'>
@@ -72,17 +74,23 @@ const NewGameMenu = () => {
 			<div className='container-btn'>
 				<button
 					className='btn btn-ng btn-yellow'
-					// onClick={() => setIsVsPlayer(false)}
+					onClick={() => {
+						setGameType('cpu')
+						console.log(gameType)
+					}}
 				>
-					<Link to='/game' state={{ player1, shouldRedirect }}>
+					<Link to='/game' state={{ player1, gameType }}>
 						NEW GAME (VS CPU)
 					</Link>
 				</button>
 				<button
 					className='btn btn-ng btn-blue'
-					// onClick={() => setIsVsPlayer(true)}
+					onClick={() => {
+						setGameType('pvp')
+						console.log(gameType)
+					}}
 				>
-					<Link to='/game' state={{ player1, shouldRedirect }}>
+					<Link to='/game' state={{ player1, gameType }}>
 						NEW GAME (VS PLAYER)
 					</Link>
 				</button>

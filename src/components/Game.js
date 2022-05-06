@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import GridItem from './GridItem'
 import logo from '../assets/logo.svg'
@@ -8,18 +8,23 @@ import restart from '../assets/icon-restart.svg'
 
 const Game = () => {
 	const location = useLocation()
+	const navigate = useNavigate()
 	const player1 = location.state.player1
+	const gameType = location.state.gameType
 	const [turn, setTurn] = useState(player1)
 	const [cells, setCells] = useState(Array(9).fill(''))
 	const [winner, setWinner] = useState(null)
-	const navigate = useNavigate()
 
 	useEffect(() => {
 		if (winner !== null) {
 			navigate('/gameover', { state: { player1 } })
 			setWinner(null)
 		}
-	}, [winner])
+	}, [winner, navigate, player1])
+
+	// useEffect(() => {
+	// 	console.log(gameType)
+	// }, [gameType])
 
 	const checkForWinner = (squares) => {
 		let combinations = {
@@ -60,6 +65,7 @@ const Game = () => {
 	const handleRestart = () => {
 		setWinner(null)
 		setCells(Array(9).fill(''))
+		setTurn(player1)
 	}
 
 	const switchTurn = (num) => {
@@ -85,9 +91,7 @@ const Game = () => {
 				<img className='logo' src={logo} alt='xo logo'></img>
 				<div className='turn'>
 					<img src={turn === 'x' ? greyX20 : greyO20} alt=''></img>
-					<p>
-						<Link to='/gameover'>TURN</Link>
-					</p>
+					<p>TURN</p>
 				</div>
 				<div className='restart' onClick={() => handleRestart()}>
 					<img src={restart} alt=''></img>
@@ -121,6 +125,7 @@ const Game = () => {
 				</div>
 			</div>
 			<div>Winner: {winner}</div>
+			<div>GameType = {gameType}</div>
 		</div>
 	)
 }
