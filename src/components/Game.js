@@ -11,20 +11,31 @@ const Game = () => {
 	const navigate = useNavigate()
 	const player1 = location.state.player1
 	const gameType = location.state.gameType
+	const shouldReset = location.state.shouldReset
 	const [turn, setTurn] = useState(player1)
 	const [cells, setCells] = useState(Array(9).fill(''))
 	const [winner, setWinner] = useState(null)
+	const [reset, setReset] = useState(false)
 
 	useEffect(() => {
 		if (winner !== null) {
-			navigate('/gameover', { state: { player1 } })
+			navigate('/gameover', { state: { player1, gameType } })
 			setWinner(null)
 		}
-	}, [winner, navigate, player1])
+	}, [winner, navigate, player1, gameType])
 
-	// useEffect(() => {
-	// 	console.log(gameType)
-	// }, [gameType])
+	useEffect(() => {
+		if (reset) {
+			setWinner(null)
+			setCells(Array(9).fill(''))
+			setTurn(player1)
+		}
+		setReset(false)
+	}, [reset, player1])
+
+	useEffect(() => {
+		if (shouldReset) setReset(true)
+	}, [shouldReset])
 
 	const checkForWinner = (squares) => {
 		let combinations = {
@@ -62,12 +73,6 @@ const Game = () => {
 		}
 	}
 
-	const handleRestart = () => {
-		setWinner(null)
-		setCells(Array(9).fill(''))
-		setTurn(player1)
-	}
-
 	const switchTurn = (num) => {
 		if (cells[num] !== '') {
 			console.log('Already clicked')
@@ -93,7 +98,7 @@ const Game = () => {
 					<img src={turn === 'x' ? greyX20 : greyO20} alt=''></img>
 					<p>TURN</p>
 				</div>
-				<div className='restart' onClick={() => handleRestart()}>
+				<div className='restart' onClick={() => setReset(true)}>
 					<img src={restart} alt=''></img>
 				</div>
 			</div>
@@ -125,7 +130,6 @@ const Game = () => {
 				</div>
 			</div>
 			<div>Winner: {winner}</div>
-			<div>GameType = {gameType}</div>
 		</div>
 	)
 }
