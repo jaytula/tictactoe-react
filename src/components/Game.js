@@ -71,6 +71,13 @@ const Game = () => {
 				}
 			})
 		}
+		if (
+			squares.filter((item) => {
+				return item !== 'x' && item !== 'o'
+			}).length === 0
+		) {
+			setWinner('tie')
+		}
 	}
 
 	const switchTurn = (num) => {
