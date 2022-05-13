@@ -19,7 +19,7 @@ const Game = () => {
 
 	useEffect(() => {
 		if (winner !== null) {
-			navigate('/gameover', { state: { player1, gameType } })
+			navigate('/gameover', { state: { player1, gameType, winner } })
 			setWinner(null)
 		}
 	}, [winner, navigate, player1, gameType])
@@ -136,7 +136,6 @@ const Game = () => {
 					<p>0</p>
 				</div>
 			</div>
-			<div>Winner: {winner}</div>
 		</div>
 	)
 }

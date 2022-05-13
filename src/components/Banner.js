@@ -1,24 +1,22 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import yellowO64 from '../assets/icon-o.svg'
+import BannerText from './BannerText'
+import BannerWinner from './BannerWinner'
 
 const Banner = () => {
 	const location = useLocation()
 	const navigate = useNavigate()
 	const player1 = location.state.player1
 	const gameType = location.state.gameType
+	const winner = location.state.winner
+	console.log(winner)
 	const [shouldReset, setShouldReset] = useState(true)
 	return (
 		<>
 			<div className='bg-darken'></div>
 			<div className='banner'>
-				<div>
-					<p>OH NO, YOU LOST...</p>
-				</div>
-				<div>
-					<img src={yellowO64} alt='' />
-					<h1>TAKES THE ROUND</h1>
-				</div>
+				<BannerText player1={player1} gameType={gameType} winner={winner} />
+				<BannerWinner winner={winner} />
 				<div>
 					<button className='btn-quit' onClick={() => navigate('/')}>
 						QUIT

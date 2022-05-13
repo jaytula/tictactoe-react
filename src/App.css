@@ -240,7 +240,7 @@ a, a:hover, a:visited, a:active, a:link {
   margin-top: 45px;
 }
 
-h1 {
+.banner-heading {
   line-height: 50px;
   font-size: 50px;
   margin-left: 24px;
@@ -288,9 +288,19 @@ h1 {
   justify-content: center;
 }
 
-.banner div:nth-child(2) {
+.banner-div-yellow {
   display: flex;
   color: var(--yellow-primary);
+}
+
+.banner-div-blue {
+  display: flex;
+  color: var(--blue-primary);
+}
+
+.banner-div-tie {
+  display: flex;
+  color: var(--light-primary);
 }
 
 .banner button {
