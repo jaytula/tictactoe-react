@@ -15,14 +15,28 @@ const Game = () => {
 	const [turn, setTurn] = useState(player1)
 	const [cells, setCells] = useState(Array(9).fill(''))
 	const [winner, setWinner] = useState(null)
+	const [score, setScore] = useState([0, 0, 0])
 	const [reset, setReset] = useState(false)
 
 	useEffect(() => {
 		if (winner !== null) {
+			if (winner === 'x') {
+				console.log(score)
+				setScore(...score, (score[0] = score[0] + 1))
+				console.log(score)
+			} else if (winner === 'tie') {
+				console.log(score)
+				setScore(...score, (score[1] = score[1] + 1))
+				console.log(score)
+			} else if (winner === 'o') {
+				console.log(score)
+				setScore(...score, (score[2] = score[2] + 1))
+				console.log(score)
+			}
 			navigate('/gameover', { state: { player1, gameType, winner } })
 			setWinner(null)
 		}
-	}, [winner, navigate, player1, gameType])
+	}, [winner, navigate, player1, gameType, score])
 
 	useEffect(() => {
 		if (reset) {
@@ -125,15 +139,15 @@ const Game = () => {
 			<div className='scores'>
 				<div className='blue-pri'>
 					<p>X (YOU)</p>
-					<p>0</p>
+					<p>{score[0]}</p>
 				</div>
 				<div className='light-pri'>
 					<p>TIES</p>
-					<p>0</p>
+					<p>{score[1]}</p>
 				</div>
 				<div className='yellow-pri'>
 					<p>O (CPU)</p>
-					<p>0</p>
+					<p>{score[2]}</p>
 				</div>
 			</div>
 		</div>
