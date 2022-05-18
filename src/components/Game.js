@@ -19,21 +19,16 @@ const Game = () => {
 	const [reset, setReset] = useState(false)
 
 	useEffect(() => {
+		console.log(score)
 		if (winner !== null) {
 			if (winner === 'x') {
-				console.log(score)
-				setScore(...score, (score[0] = score[0] + 1))
-				console.log(score)
+				setScore([score[0] + 1, ...score.slice(1)])
 			} else if (winner === 'tie') {
-				console.log(score)
-				setScore(...score, (score[1] = score[1] + 1))
-				console.log(score)
+				setScore([...score.slice(0, 1), score[1] + 1, ...score.slice(2)])
 			} else if (winner === 'o') {
-				console.log(score)
-				setScore(...score, (score[2] = score[2] + 1))
-				console.log(score)
+				setScore([...score.slice(0, 2), score[2] + 1])
 			}
-			navigate('/gameover', { state: { player1, gameType, winner } })
+			navigate('/gameover', { state: { player1, gameType, winner, score } })
 			setWinner(null)
 		}
 	}, [winner, navigate, player1, gameType, score])

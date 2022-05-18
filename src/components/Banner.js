@@ -9,6 +9,7 @@ const Banner = () => {
 	const player1 = location.state.player1
 	const gameType = location.state.gameType
 	const winner = location.state.winner
+	const score = location.state.score
 	console.log(winner)
 	const [shouldReset, setShouldReset] = useState(true)
 	return (
@@ -24,7 +25,9 @@ const Banner = () => {
 					<button
 						className='btn-nextrnd'
 						onClick={() => {
-							navigate('/game', { state: { player1, gameType, shouldReset } })
+							navigate('/game', {
+								state: { player1, gameType, shouldReset, score },
+							})
 						}}
 					>
 						NEXT ROUND
