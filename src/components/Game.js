@@ -115,7 +115,7 @@ const Game = () => {
 					<img src={turn === 'x' ? greyX20 : greyO20} alt=''></img>
 					<p>TURN</p>
 				</div>
-				<div className='restart' onClick={() => setReset(true)}>
+				<div className='restart' onClick={() => setWinner('reset')}>
 					<img src={restart} alt=''></img>
 				</div>
 			</div>

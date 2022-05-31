@@ -232,7 +232,7 @@ a, a:hover, a:visited, a:active, a:link {
   align-items: center;
 }
 
-.banner p {
+.banner div p {
   line-height: 20px;
   font-size: 20px;
   color: var(--light-primary);

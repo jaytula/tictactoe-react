@@ -1,5 +1,5 @@
-import yellowO64 from '../assets/icon-o.svg'
-import blueX64 from '../assets/icon-x.svg'
+import yellowO64 from '../assets/icon-o.svg';
+import blueX64 from '../assets/icon-x.svg';
 
 const BannerWinner = ({ winner }) => {
 	return (
@@ -21,8 +21,11 @@ const BannerWinner = ({ winner }) => {
 			{winner === 'tie' && (
 				<div className='banner-div-tie banner-heading'>ROUND TIED</div>
 			)}
+			{winner === 'reset' && (
+				<div className='banner-div-tie banner-heading'>RESTART GAME?</div>
+			)}
 		</div>
-	)
-}
+	);
+};
 
-export default BannerWinner
+export default BannerWinner;
