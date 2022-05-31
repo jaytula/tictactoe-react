@@ -64,6 +64,14 @@ const Game = () => {
 			],
 		};
 
+		if (
+			squares.filter((item) => {
+				return item !== 'x' && item !== 'o';
+			}).length === 0
+		) {
+			setWinner('tie');
+		}
+
 		for (let combo in combinations) {
 			combinations[combo].forEach((pattern) => {
 				if (
@@ -79,13 +87,6 @@ const Game = () => {
 					setWinner(squares[pattern[0]]);
 				}
 			});
-		}
-		if (
-			squares.filter((item) => {
-				return item !== 'x' && item !== 'o';
-			}).length === 0
-		) {
-			setWinner('tie');
 		}
 	};
 
