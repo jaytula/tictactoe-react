@@ -1,50 +1,50 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import GridItem from './GridItem'
-import logo from '../assets/logo.svg'
-import greyX20 from '../assets/icon-x-20.svg'
-import greyO20 from '../assets/icon-o-20.svg'
-import restart from '../assets/icon-restart.svg'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import GridItem from './GridItem';
+import logo from '../assets/logo.svg';
+import greyX20 from '../assets/icon-x-20.svg';
+import greyO20 from '../assets/icon-o-20.svg';
+import restart from '../assets/icon-restart.svg';
 
 const Game = () => {
-	const location = useLocation()
-	const navigate = useNavigate()
-	const player1 = location.state.player1
-	const gameType = location.state.gameType
-	const shouldReset = location.state.shouldReset
-	const [turn, setTurn] = useState(player1)
-	const [cells, setCells] = useState(Array(9).fill(''))
-	const [winner, setWinner] = useState(null)
-	const [score, setScore] = useState([0, 0, 0])
-	const [reset, setReset] = useState(false)
+	const location = useLocation();
+	const navigate = useNavigate();
+	const player1 = location.state.player1;
+	const gameType = location.state.gameType;
+	const shouldReset = location.state.shouldReset;
+	const [turn, setTurn] = useState(player1);
+	const [cells, setCells] = useState(Array(9).fill(''));
+	const [winner, setWinner] = useState(null);
+	const [score, setScore] = useState([0, 0, 0]);
+	const [reset, setReset] = useState(false);
 
 	useEffect(() => {
-		console.log(score)
+		console.log(score);
 		if (winner !== null) {
 			if (winner === 'x') {
-				setScore([score[0] + 1, ...score.slice(1)])
+				setScore([score[0] + 1, ...score.slice(1)]);
 			} else if (winner === 'tie') {
-				setScore([...score.slice(0, 1), score[1] + 1, ...score.slice(2)])
+				setScore([...score.slice(0, 1), score[1] + 1, ...score.slice(2)]);
 			} else if (winner === 'o') {
-				setScore([...score.slice(0, 2), score[2] + 1])
+				setScore([...score.slice(0, 2), score[2] + 1]);
 			}
-			navigate('/gameover', { state: { player1, gameType, winner, score } })
-			setWinner(null)
+			navigate('/gameover', { state: { player1, gameType, winner, score } });
+			setWinner(null);
 		}
-	}, [winner, navigate, player1, gameType, score])
+	}, [winner, navigate, player1, gameType, score]);
 
 	useEffect(() => {
 		if (reset) {
-			setWinner(null)
-			setCells(Array(9).fill(''))
-			setTurn(player1)
+			setWinner(null);
+			setCells(Array(9).fill(''));
+			setTurn(player1);
 		}
-		setReset(false)
-	}, [reset, player1])
+		setReset(false);
+	}, [reset, player1]);
 
 	useEffect(() => {
-		if (shouldReset) setReset(true)
-	}, [shouldReset])
+		if (shouldReset) setReset(true);
+	}, [shouldReset]);
 
 	const checkForWinner = (squares) => {
 		let combinations = {
@@ -62,7 +62,7 @@ const Game = () => {
 				[0, 4, 8],
 				[2, 4, 6],
 			],
-		}
+		};
 
 		for (let combo in combinations) {
 			combinations[combo].forEach((pattern) => {
@@ -76,35 +76,35 @@ const Game = () => {
 					squares[pattern[0]] === squares[pattern[1]] &&
 					squares[pattern[1]] === squares[pattern[2]]
 				) {
-					setWinner(squares[pattern[0]])
+					setWinner(squares[pattern[0]]);
 				}
-			})
+			});
 		}
 		if (
 			squares.filter((item) => {
-				return item !== 'x' && item !== 'o'
+				return item !== 'x' && item !== 'o';
 			}).length === 0
 		) {
-			setWinner('tie')
+			setWinner('tie');
 		}
-	}
+	};
 
 	const switchTurn = (num) => {
 		if (cells[num] !== '') {
-			console.log('Already clicked')
-			return
+			console.log('Already clicked');
+			return;
 		}
-		let squares = [...cells]
+		let squares = [...cells];
 		if (turn === 'x') {
-			squares[num] = 'x'
-			setTurn('o')
+			squares[num] = 'x';
+			setTurn('o');
 		} else {
-			squares[num] = 'o'
-			setTurn('x')
+			squares[num] = 'o';
+			setTurn('x');
 		}
-		checkForWinner(squares)
-		setCells(squares)
-	}
+		checkForWinner(squares);
+		setCells(squares);
+	};
 
 	return (
 		<div className='container container-gs'>
@@ -133,7 +133,10 @@ const Game = () => {
 
 			<div className='scores'>
 				<div className='blue-pri'>
-					<p>X (YOU)</p>
+					{gameType === 'pvp' &&
+						(player1 === 'x' ? <p>X (P1)</p> : <p>X (P2)</p>)}
+					{gameType === 'cpu' &&
+						(player1 === 'x' ? <p>X (YOU)</p> : <p>X (CPU)</p>)}
 					<p>{score[0]}</p>
 				</div>
 				<div className='light-pri'>
@@ -141,12 +144,15 @@ const Game = () => {
 					<p>{score[1]}</p>
 				</div>
 				<div className='yellow-pri'>
-					<p>O (CPU)</p>
+					{gameType === 'pvp' &&
+						(player1 === 'o' ? <p>O (P1)</p> : <p>O (P2)</p>)}
+					{gameType === 'cpu' &&
+						(player1 === 'o' ? <p>O (YOU)</p> : <p>O (CPU)</p>)}
 					<p>{score[2]}</p>
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default Game
+export default Game;
