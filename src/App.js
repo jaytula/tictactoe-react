@@ -1,8 +1,8 @@
-import './App.css'
-import Game from './components/Game'
-import NewGameMenu from './components/NewGameMenu'
-import Banner from './components/Banner'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './App.css';
+import Game from './components/Game';
+import NewGameMenu from './components/NewGameMenu';
+import Banner from './components/Banner';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 	return (
@@ -22,7 +22,7 @@ function App() {
 				<Route />
 			</Routes>
 		</Router>
-	)
+	);
 }
 
-export default App
+export default App;

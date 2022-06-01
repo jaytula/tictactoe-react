@@ -186,8 +186,18 @@ a, a:hover, a:visited, a:active, a:link {
   width: 140px;
   height: 140px;
   border-radius: 15px;
-  background-color: var(--dark-secondary);
+  /* background-color: var(--dark-secondary); */
   box-shadow: 0px 8px var(--dark-shadow);
+}
+
+.grid-winner-x {
+  background-color: var(--blue-primary);
+}
+.grid-winner-o {
+  background-color: var(--yellow-primary);
+}
+.grid-normal {
+  background-color: var(--dark-secondary);
 }
 
 .scores {

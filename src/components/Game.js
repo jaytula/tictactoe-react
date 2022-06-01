@@ -19,7 +19,6 @@ const Game = () => {
 	const [reset, setReset] = useState(false);
 
 	useEffect(() => {
-		console.log(score);
 		if (winner !== null) {
 			if (winner === 'x') {
 				setScore([score[0] + 1, ...score.slice(1)]);
@@ -45,6 +44,18 @@ const Game = () => {
 	useEffect(() => {
 		if (shouldReset) setReset(true);
 	}, [shouldReset]);
+
+	const handleHighlight = (squares, pattern) => {
+		if (squares[pattern[0]] === 'x') {
+			squares[pattern[0]] = 'xWinner';
+			squares[pattern[1]] = 'xWinner';
+			squares[pattern[2]] = 'xWinner';
+		} else if (squares[pattern[0]] === 'o') {
+			squares[pattern[0]] = 'oWinner';
+			squares[pattern[1]] = 'oWinner';
+			squares[pattern[2]] = 'oWinner';
+		}
+	};
 
 	const checkForWinner = (squares) => {
 		let combinations = {
@@ -85,6 +96,7 @@ const Game = () => {
 					squares[pattern[1]] === squares[pattern[2]]
 				) {
 					setWinner(squares[pattern[0]]);
+					handleHighlight(squares, pattern);
 				}
 			});
 		}
@@ -92,7 +104,6 @@ const Game = () => {
 
 	const switchTurn = (num) => {
 		if (cells[num] !== '') {
-			console.log('Already clicked');
 			return;
 		}
 		let squares = [...cells];

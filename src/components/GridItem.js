@@ -1,44 +1,55 @@
-import GridXOutline from './GridXOutline'
-import GridX from './GridX'
-import GridOOutline from './GridOOutline'
-import GridO from './GridO'
-import { useState } from 'react'
+import GridXOutline from './GridXOutline';
+import GridX from './GridX';
+import GridOOutline from './GridOOutline';
+import GridO from './GridO';
+import { useState } from 'react';
+import darkO64 from '../assets/icon-o-dark.svg';
+import darkX64 from '../assets/icon-x-dark.svg';
 
 const GridItem = ({ turn, switchTurn, num, cells }) => {
-	const [isHover, setIsHover] = useState(false)
+	const [isHover, setIsHover] = useState(false);
 	// const [isOn, setIsOn] = useState(false)
 
-	const handleClick = (num) => switchTurn(num)
+	const handleClick = (num) => switchTurn(num);
 
 	return (
 		<div
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 			onClick={() => handleClick(num)}
+			className={
+				cells[num] === 'xWinner'
+					? 'grid-winner-x'
+					: cells[num] === 'oWinner'
+					? 'grid-winner-o'
+					: 'grid-normal'
+			}
 		>
-			{/* {isHover && (turn ? <GridXOutline /> : <GridOOutline />)} */}
-			{/* {isOn && (turn ? <GridX /> : <GridO />)} */}
-			{/* {(() => {
-				if (isOn) {
-					return turn ? <GridX /> : <GridO />
-				} else if (isHover) {
-					return turn ? <GridXOutline /> : <GridOOutline />
-				}
-			})()} */}
-			{/* {cells[num]} */}
 			{(() => {
 				if (cells[num] === 'x') {
-					return <GridX />
+					return <GridX />;
 				} else if (cells[num] === 'o') {
-					return <GridO />
+					return <GridO />;
 				} else if (isHover && turn === 'x') {
-					return <GridXOutline />
+					return <GridXOutline />;
 				} else if (isHover && turn === 'o') {
-					return <GridOOutline />
+					return <GridOOutline />;
+				} else if (cells[num] === 'xWinner') {
+					return (
+						<div className='center'>
+							<img src={darkX64} alt=''></img>
+						</div>
+					);
+				} else if (cells[num] === 'oWinner') {
+					return (
+						<div className='center'>
+							<img src={darkO64} alt=''></img>
+						</div>
+					);
 				}
 			})()}
 		</div>
-	)
-}
+	);
+};
 
-export default GridItem
+export default GridItem;
