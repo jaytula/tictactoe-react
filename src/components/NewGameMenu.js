@@ -1,29 +1,29 @@
-import { useNavigate } from 'react-router-dom'
-import logo from '../assets/logo.svg'
-import greyX32 from '../assets/icon-x-32-grey.svg'
-import greyO32 from '../assets/icon-o-32-grey.svg'
-import darkGreyX32 from '../assets/icon-x-32-dark-grey.svg'
-import darkGreyO32 from '../assets/icon-o-32-dark-grey.svg'
-import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.svg';
+import greyX32 from '../assets/icon-x-32-grey.svg';
+import greyO32 from '../assets/icon-o-32-grey.svg';
+import darkGreyX32 from '../assets/icon-x-32-dark-grey.svg';
+import darkGreyO32 from '../assets/icon-o-32-dark-grey.svg';
+import { useState, useEffect } from 'react';
 
 const NewGameMenu = () => {
-	const navigate = useNavigate()
-	const [player1, setPlayer1] = useState('o')
-	const [gameType, setGameType] = useState('default')
+	const navigate = useNavigate();
+	const [player1, setPlayer1] = useState('o');
+	const [gameType, setGameType] = useState('default');
 
 	const onClick = () => {
 		if (player1 === 'x') {
-			setPlayer1('o')
+			setPlayer1('o');
 		} else {
-			setPlayer1('x')
+			setPlayer1('x');
 		}
-	}
+	};
 
 	useEffect(() => {
 		if (gameType === 'cpu' || gameType === 'pvp') {
-			navigate('/game', { state: { player1, gameType } })
+			navigate('/game', { state: { player1, gameType } });
 		}
-	}, [gameType, player1, navigate])
+	}, [gameType, player1, navigate]);
 
 	return (
 		<div className='container'>
@@ -37,13 +37,17 @@ const NewGameMenu = () => {
 				<div className='btn-xo-container'>
 					<div className='btn-xo'>
 						<button
-							className='btn btn-svg btn-x'
-							onClick={onClick}
-							style={
+							className={
 								player1 === 'o'
-									? { backgroundColor: '#1A2A33' }
-									: { backgroundColor: '#A8BFC9' }
+									? 'btn btn-svg btn-x-off'
+									: 'btn btn-svg btn-x-on'
 							}
+							onClick={onClick}
+							// style={
+							// 	player1 === 'o'
+							// 		? { backgroundColor: '#1A2A33' }
+							// 		: { backgroundColor: '#A8BFC9' }
+							// }
 						>
 							{player1 === 'o' ? (
 								<img src={greyX32} alt='' />
@@ -52,13 +56,17 @@ const NewGameMenu = () => {
 							)}
 						</button>
 						<button
-							className='btn btn-svg btn-o'
-							onClick={onClick}
-							style={
+							className={
 								player1 === 'o'
-									? { backgroundColor: '#A8BFC9' }
-									: { backgroundColor: '#1A2A33' }
+									? 'btn btn-svg btn-o-on'
+									: 'btn btn-svg btn-o-off'
 							}
+							onClick={onClick}
+							// style={
+							// 	player1 === 'o'
+							// 		? { backgroundColor: '#A8BFC9' }
+							// 		: { backgroundColor: '#1A2A33' }
+							// }
 						>
 							{player1 === 'o' ? (
 								<img src={darkGreyO32} alt='' />
@@ -87,7 +95,7 @@ const NewGameMenu = () => {
 				</button>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default NewGameMenu
+export default NewGameMenu;

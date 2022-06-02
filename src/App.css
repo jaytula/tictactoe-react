@@ -91,6 +91,21 @@ a, a:hover, a:visited, a:active, a:link {
   height: 54px;
 }
 
+.btn-x-on {
+  background-color: var(--light-primary);
+}
+
+.btn-o-on {
+  background-color: var(--light-primary);
+}
+
+.btn-x-off:hover {
+  background-color: var(--dark-secondary);
+}
+.btn-o-off:hover {
+  background-color: var(--dark-secondary);
+}
+
 /* .btn-on {
   width: 50%;
   border-radius: 10px;
@@ -120,9 +135,17 @@ a, a:hover, a:visited, a:active, a:link {
   box-shadow: 0px 8px var(--yellow-shadow);
 }
 
+.btn-yellow:hover {
+  background-color: var(--yellow-secondary);
+}
+
 .btn-blue {
   background-color: var(--blue-primary);
   box-shadow: 0px 8px var(--blue-shadow);
+}
+
+.btn-blue:hover {
+  background-color: var(--blue-secondary)
 }
 
 /* Gamestart page */
@@ -174,6 +197,7 @@ a, a:hover, a:visited, a:active, a:link {
 
 .restart:hover {
   cursor: pointer;
+  background-color: var(--light-secondary);
 }
 
 .tiles-grid {
@@ -276,7 +300,8 @@ a, a:hover, a:visited, a:active, a:link {
 }
 
 .btn-quit:hover {
- cursor: pointer; 
+ cursor: pointer;
+ background-color: var(--light-secondary);
 }
 
 .btn-nextrnd {
@@ -290,6 +315,7 @@ a, a:hover, a:visited, a:active, a:link {
 
 .btn-nextrnd:hover {
   cursor: pointer;
+  background-color: var(--yellow-secondary);
 }
 
 .banner div {
